@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+
+    <string name="home_location_temperature_text">%sº</string>
+</resources>

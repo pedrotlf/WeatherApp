@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">@color/blue_pacific</color>
+
+    <color name="ming">#1f6870</color>
+    <color name="teal_steel">#648b8f</color>
+    <color name="blue_pacific">#19acbd</color>
+    <color name="gray_light">#DCDCDC</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red_dark">#A10221</color>
+    <color name="green_dark">#198F09</color>
+</resources>
