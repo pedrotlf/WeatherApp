@@ -1,7 +1,7 @@
 package br.com.pedrotlf.weatherapp.domain.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 data class DetailedWeather(
     val consolidatedWeather: List<ConsolidatedWeather>?,
