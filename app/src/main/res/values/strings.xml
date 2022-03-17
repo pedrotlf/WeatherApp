@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">WeatherApp</string>
 
+    <string name="home_forecast_button">Forecast</string>
+
     <string name="home_location_temperature_text">%sº</string>
+
+    <string name="forecast_weather_item_day_and_condition">%s - %s</string>
+    <string name="forecast_weather_item_weather_range">%dºC to %dºC</string>
 </resources>

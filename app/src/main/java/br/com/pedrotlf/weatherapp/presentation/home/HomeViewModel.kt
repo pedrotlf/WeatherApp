@@ -2,6 +2,7 @@ package br.com.pedrotlf.weatherapp.presentation.home
 
 import androidx.lifecycle.*
 import br.com.pedrotlf.weatherapp.Resource
+import br.com.pedrotlf.weatherapp.domain.model.ConsolidatedWeather
 import br.com.pedrotlf.weatherapp.domain.model.DetailedWeather
 import br.com.pedrotlf.weatherapp.domain.use_case.GetDetailedWeatherUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,5 +32,21 @@ class HomeViewModel @Inject constructor(
     fun selectLocationId(id: String){
         //TODO save selected location to prefs
         getWeatherDetails(id)
+    }
+
+    fun forecastButtonClicked(){
+        val currentWeather = _weatherDetails.value
+        if(currentWeather is Resource.Success)
+            currentWeather.data.consolidatedWeather?.let {
+                _direction.value = Directions.GoToForecast(it)
+                _direction.value = null
+            }
+    }
+
+    private val _direction = MutableLiveData<Directions?>(null)
+    val direction: LiveData<Directions?> = _direction
+
+    sealed class Directions{
+        data class GoToForecast(val list: List<ConsolidatedWeather>): Directions()
     }
 }

@@ -9,5 +9,18 @@
         android:id="@+id/homeFragment"
         android:name="br.com.pedrotlf.weatherapp.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_forecastFragment"
+            app:destination="@id/forecastFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forecastFragment"
+        android:name="br.com.pedrotlf.weatherapp.presentation.forecast.ForecastFragment"
+        android:label="item_forecast_weather"
+        tools:layout="@layout/item_forecast_weather" >
+        <argument
+            android:name="weatherList"
+            app:argType="br.com.pedrotlf.weatherapp.domain.model.ConsolidatedWeather[]" />
+    </fragment>
 </navigation>

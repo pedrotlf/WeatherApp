@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.pedrotlf.weatherapp.BaseFragment
 import br.com.pedrotlf.weatherapp.R
 import br.com.pedrotlf.weatherapp.Resource
 import br.com.pedrotlf.weatherapp.databinding.FragmentHomeBinding
+import br.com.pedrotlf.weatherapp.domain.model.ConsolidatedWeather
 import br.com.pedrotlf.weatherapp.domain.model.DetailedWeather
 import kotlin.math.roundToInt
 
@@ -33,6 +35,32 @@ class HomeFragment : BaseFragment(){
         super.onViewCreated(view, savedInstanceState)
 
         binding.observeWeatherDetails()
+
+        observeDirection()
+
+        binding.homeForecastButton.setOnClickListener {
+            viewModel.forecastButtonClicked()
+        }
+    }
+
+    private fun observeDirection() {
+        viewModel.direction.observe(viewLifecycleOwner) {
+            when(it){
+                is HomeViewModel.Directions.GoToForecast -> {
+                    goToForecast(it.list)
+                }
+
+                else -> {
+                    //do nothing
+                }
+            }
+
+        }
+    }
+
+    private fun goToForecast(weatherList: List<ConsolidatedWeather>) {
+        val action = HomeFragmentDirections.actionHomeFragmentToForecastFragment(weatherList.toTypedArray())
+        findNavController().navigate(action)
     }
 
     private fun FragmentHomeBinding.observeWeatherDetails() {
